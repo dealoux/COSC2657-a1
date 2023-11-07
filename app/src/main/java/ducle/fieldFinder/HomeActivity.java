@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import ducle.fieldFinder.login.LoginActivity;
+
 public class HomeActivity extends AppCompatActivity {
 
     @Override
