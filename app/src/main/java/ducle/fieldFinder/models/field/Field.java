@@ -2,6 +2,7 @@ package ducle.fieldFinder.models.field;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import ducle.fieldFinder.models.Entity;
@@ -80,5 +81,38 @@ public class Field extends Entity {
      *  */
     public float area(){
         return getWidth()*getHeight();
+    }
+
+    /**
+     *  This method returns true if the field is available during the given time slot on the given date
+     * @param slot
+     * @param date up to 7 days from today
+     *  */
+    public boolean isAvailable(String slot, Date date){
+        boolean result = true;
+        return result;
+    }
+
+    /**
+     *  This method returns true if the field is available during the given time slot today
+     * @param slot
+     *  */
+    public boolean isAvailable(String slot){
+        return isAvailable(slot, new Date());
+    }
+
+    /**
+     *  This method returns true if the field is available on given date
+     * @param date up to 7 days from today
+     *  */
+    public boolean isAvailable(Date date){
+        return isAvailable(null, date);
+    }
+
+    /**
+     *  This method returns true if the field is available today
+     *  */
+    public boolean isAvailable(){
+        return isAvailable(new Date());
     }
 }

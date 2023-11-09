@@ -2,6 +2,7 @@ package ducle.fieldFinder.models.field;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import ducle.fieldFinder.models.Entity;
@@ -18,15 +19,17 @@ public class Reservation extends Entity {
 
     private Customer customer;
     private Field field;
-    private String slot;
+    private Date date; // up to 7 days from today
+    private String timeslot;
     private String cost;
     private String status;
 
-    public Reservation(String id, Customer customer, Field field, String slot, String cost) {
+    public Reservation(String id, Customer customer, Field field, Date date, String timeslot, String cost) {
         super("REV_" + id);
         this.customer = customer;
         this.field = field;
-        this.slot = slot;
+        this.date = date;
+        this.timeslot = timeslot;
         this.cost = cost;
         this.status = STATUS_LIST.get(0);
     }
@@ -39,12 +42,24 @@ public class Reservation extends Entity {
         return field;
     }
 
-    public String getSlot() {
-        return slot;
+    public void setField(Field field) {
+        this.field = field;
     }
 
-    public void setSlot(String slot) {
-        this.slot = slot;
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getTimeslot() {
+        return timeslot;
+    }
+
+    public void setTimeslot(String timeslot) {
+        this.timeslot = timeslot;
     }
 
     public void setCost(String cost) {
