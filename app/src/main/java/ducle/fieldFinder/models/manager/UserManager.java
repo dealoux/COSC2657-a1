@@ -9,7 +9,7 @@ public class UserManager extends Manager<User>{
     /**
      * This function returns a list of all Customer instances in the map
      */
-    public List<Customer> getRegularList(){
+    public List<Customer> getCustomerList(){
         List<Customer> result = new ArrayList<>();
 
         for(User user : map.values()){
@@ -24,7 +24,7 @@ public class UserManager extends Manager<User>{
     /**
      * This function returns a list of Owner instances in the map
      */
-    public List<Owner> getVIPList(){
+    public List<Owner> getOwnerList(){
         List<Owner> result = new ArrayList<>();
 
         for(User user : map.values()){
