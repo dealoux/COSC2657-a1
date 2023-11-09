@@ -1,8 +1,12 @@
 package ducle.fieldFinder.activities.login;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import ducle.fieldFinder.activities.HomeActivity;
 import ducle.fieldFinder.R;
@@ -35,13 +40,22 @@ public class LoginFragment extends Fragment {
         Button buttonLogin = (Button) view.findViewById(R.id.buttonLogin);
         Button buttonRegister = (Button) view.findViewById(R.id.buttonLoginRegister);
 
+        ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if(result.getResultCode() == RESULT_OK){
+                        Intent data = result.getData();
+                        Toast.makeText(getActivity(), (String) data.getExtras().get("response"), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), HomeActivity.class);
                 intent.putExtra("username", username.getText().toString());
                 intent.putExtra("password", password.getText().toString());
-                startActivityForResult(intent, 100);
+                launcher.launch(intent);
             }
         });
 
