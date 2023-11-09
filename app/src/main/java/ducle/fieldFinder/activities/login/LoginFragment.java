@@ -1,4 +1,4 @@
-package ducle.fieldFinder.login;
+package ducle.fieldFinder.activities.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import ducle.fieldFinder.HomeActivity;
+import ducle.fieldFinder.activities.HomeActivity;
 import ducle.fieldFinder.R;
 
 public class LoginFragment extends Fragment {

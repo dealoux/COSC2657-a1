@@ -1,4 +1,4 @@
-package ducle.fieldFinder.login;
+package ducle.fieldFinder.activities.login;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package ducle.fieldFinder.login;
+package ducle.fieldFinder.activities.login;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package ducle.fieldFinder;
+package ducle.fieldFinder.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import ducle.fieldFinder.login.LoginActivity;
+import ducle.fieldFinder.R;
+import ducle.fieldFinder.activities.login.LoginActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
