@@ -13,12 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import ducle.fieldFinder.R;
+import ducle.fieldFinder.activities.utils.ActivityUtils;
 
 public class RegisterFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_register, container, false);
     }
@@ -37,6 +37,13 @@ public class RegisterFragment extends Fragment {
         Button buttonConfirm = (Button) view.findViewById(R.id.buttonRegisterConfirm);
         Button buttonCancel = (Button) view.findViewById(R.id.buttonRegisterCancel);
 
+        dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityUtils.datePickerDialog(getActivity().getSupportFragmentManager());
+            }
+        });
+
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +61,6 @@ public class RegisterFragment extends Fragment {
     }
 
     private void returnLogin(){
-//        getParentFragmentManager().beginTransaction().replace(R.id.loginFragmentFl, new LoginFragment()).commit();
         getParentFragmentManager().popBackStack();
     }
 }
