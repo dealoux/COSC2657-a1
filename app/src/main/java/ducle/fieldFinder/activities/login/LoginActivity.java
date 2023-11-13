@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements DatePickerDialog
         transaction.commit();
     }
 
+    // Date picker activity
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar cal = new GregorianCalendar(year, month, dayOfMonth);
