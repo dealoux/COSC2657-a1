@@ -19,7 +19,8 @@ public class Field extends Entity {
     private float height;
 
     public Field(String id, Centre centre, String type) {
-        super("FID_" + id);
+        super(id);
+        prefixId("FIE");
         this.centre = centre;
         this.type = type;
         this.price = 0f;
@@ -28,7 +29,8 @@ public class Field extends Entity {
     }
 
     public Field(String id, Centre centre, String type, float price, float width, float height) {
-        super("FID_" + id);
+        super(id);
+        prefixId("FIE");
         this.centre = centre;
         this.type = type;
         this.price = price;

@@ -12,7 +12,6 @@ import ducle.fieldFinder.R;
 import ducle.fieldFinder.activities.login.LoginActivity;
 
 public class HomeActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +20,9 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String username = (String) intent.getExtras().get("username");
         String password = (String) intent.getExtras().get("password");
-        String text = "Hello " + username + " (" + password + ")";
+        String response = (String) intent.getExtras().get("response");
+
+        String text = response + ": " + username + " (" + password + ")";
         Toast.makeText(HomeActivity.this, text, Toast.LENGTH_LONG).show();
 
         Button button = (Button) findViewById(R.id.buttonLogout);

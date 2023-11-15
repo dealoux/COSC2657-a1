@@ -16,6 +16,7 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.R;
 
 public class LoginActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -23,6 +24,8 @@ public class LoginActivity extends AppCompatActivity implements DatePickerDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        AppRepository.Instance();
 
         Fragment loginFragment = new LoginFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -53,4 +56,5 @@ public class LoginActivity extends AppCompatActivity implements DatePickerDialog
             }
         });
     }
+
 }

@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.activities.HomeActivity;
 import ducle.fieldFinder.R;
 
 public class LoginFragment extends Fragment {
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -54,6 +55,13 @@ public class LoginFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), HomeActivity.class);
                 intent.putExtra("username", username.getText().toString());
                 intent.putExtra("password", password.getText().toString());
+
+                if((AppRepository.Instance().getUserManager().validateLogin(username.getText().toString(), password.getText().toString()))){
+                    intent.putExtra("response", "Logged in");
+                } else {
+                    intent.putExtra("response", "Failed to log in");
+                }
+
                 launcher.launch(intent);
             }
         });

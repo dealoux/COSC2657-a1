@@ -2,20 +2,22 @@ package ducle.fieldFinder.models.user;
 
 import ducle.fieldFinder.models.Entity;
 
-public abstract class User extends Entity {
+public class User extends Entity {
     private String fName;
     private String lName;
     private String address;
     private String phone;
+    private String dob;
     private String username;
     private String password;
 
-    public User(String id, String fName, String lName, String address, String phone, String username, String password) {
+    public User(String id, String fName, String lName, String address, String phone, String dob, String username, String password) {
         super(id);
         this.fName = fName;
         this.lName = lName;
         this.address = address;
         this.phone = phone;
+        this.dob = dob;
         this.username = username;
         this.password = password;
     }
@@ -52,6 +54,14 @@ public abstract class User extends Entity {
         this.phone = phone;
     }
 
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -71,13 +81,14 @@ public abstract class User extends Entity {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
                 "fName='" + fName + '\'' +
                 ", lName='" + lName + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
+                ", dob='" + dob + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 }

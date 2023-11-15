@@ -25,7 +25,8 @@ public class Reservation extends Entity {
     private String status;
 
     public Reservation(String id, Customer customer, Field field, Date date, String timeslot, String cost) {
-        super("REV_" + id);
+        super(id);
+        prefixId("RES");
         this.customer = customer;
         this.field = field;
         this.date = date;

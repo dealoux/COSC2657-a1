@@ -35,4 +35,46 @@ public class UserManager extends Manager<User>{
 
         return result;
     }
+
+    /**
+     * This function searches all maps to try and find the user with the given id.
+     * Returns the User instance if found, otherwise returns null
+     * @param username username for searching
+     * */
+    public User searchUserByUsername(String username){
+        User result = null;
+
+        for(User user : map.values()){
+            if(user.getUsername().equals(username)){
+                result = user;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * This function validate the given login credentials.
+     * Returns true if found, otherwise returns false
+     * @param username
+     * @param password
+     * */
+    public boolean validateLogin(String username, String password){
+        boolean result = false;
+        User user = searchUserByUsername(username);
+
+        if(user != null){
+            result = user.getPassword().equals(password);
+        }
+
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "UserManager{" +
+                "map=" + map +
+                '}';
+    }
 }

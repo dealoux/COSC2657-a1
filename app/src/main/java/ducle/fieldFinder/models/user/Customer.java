@@ -8,8 +8,9 @@ import ducle.fieldFinder.models.manager.ReservationManager;
 public class Customer extends User {
     private ReservationManager reservationManager;
 
-    public Customer(String id, String fName, String lName, String address, String phone, String username, String password) {
-        super("CUS_" + id, fName, lName, address, phone, username, password);
+    public Customer(String id, String fName, String lName, String address, String phone, String dob, String username, String password) {
+        super(id, fName, lName, address, phone, dob, username, password);
+        prefixId("CUS");
         this.reservationManager = new ReservationManager();
     }
 

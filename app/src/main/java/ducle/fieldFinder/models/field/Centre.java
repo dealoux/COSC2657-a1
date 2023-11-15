@@ -25,7 +25,8 @@ public class Centre extends Entity {
     private ReservationManager reservationManager;
 
     public Centre(String id, String name, Owner owner, String address, String phone, String status) {
-        super("CTR_" + id);
+        super(id);
+        prefixId("CEN");
         this.name = name;
         this.owner = owner;
         this.address = address;
