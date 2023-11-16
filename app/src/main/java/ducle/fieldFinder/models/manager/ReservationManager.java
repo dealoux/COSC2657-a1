@@ -38,6 +38,10 @@ public class ReservationManager {
         return "Reservation " + reservation.getId() + " cancelled";
     }
 
+    public String nextReservationId(){
+        return "RES_" + String.format("%04d", manager.getMap().size() + 1);
+    }
+
     /**
      * This methods return a list of reservation(s) matching the given status from the given collection
      * @param reservationList reservation collection to filter

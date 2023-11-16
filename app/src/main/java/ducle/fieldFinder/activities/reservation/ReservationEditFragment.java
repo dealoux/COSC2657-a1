@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.R;
 import ducle.fieldFinder.activities.utils.ActivityUtils;
 import ducle.fieldFinder.models.field.Reservation;
@@ -31,7 +32,9 @@ public class ReservationEditFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Intent intent = getActivity().getIntent();
+        Bundle bundle = getArguments();
 
+        EditText reservationId = (EditText) view.findViewById(R.id.reservationId);
         EditText customer = (EditText) view.findViewById(R.id.customerReservation);
         EditText field = (EditText) view.findViewById(R.id.fieldReservation);
         EditText dateReservation = (EditText) view.findViewById(R.id.dateReservation);
@@ -39,8 +42,18 @@ public class ReservationEditFragment extends Fragment {
         Button buttonConfirm = (Button) view.findViewById(R.id.buttonReservationConfirm);
         Button buttonCancel = (Button) view.findViewById(R.id.buttonReservationCancel);
 
-        customer.setText(intent.getStringExtra("userId"));
-        field.setText(intent.getStringExtra("fieldId"));
+        if(bundle != null){
+            reservationId.setText(bundle.getString("reservationId"));
+            customer.setText(bundle.getString("userId"));
+            field.setText(bundle.getString("fieldId"));
+            dateReservation.setText(bundle.getString("date"));
+            timeslot.setText(bundle.getString("timeslot"));
+        }
+        else{
+            reservationId.setText(AppRepository.Instance().getReservationManager().nextReservationId());
+            customer.setText(intent.getStringExtra("userId"));
+            field.setText(intent.getStringExtra("fieldId"));
+        }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, Reservation.TIME_SLOTS);
         timeslot.setAdapter(adapter);

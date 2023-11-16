@@ -25,9 +25,9 @@ public class ManageReservationActivity extends AppCompatActivity implements Date
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_reservation);
 
-        Fragment reservationFragment = new ReservationEditFragment();
+        Fragment reservationFragment = new ReservationBrowseFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.mangeReservationFragmentFl, reservationFragment);
+        transaction.replace(R.id.manageReservationFragmentFl, reservationFragment);
         transaction.commit();
     }
 

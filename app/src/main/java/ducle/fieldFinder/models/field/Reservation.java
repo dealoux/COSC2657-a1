@@ -21,19 +21,28 @@ public class Reservation extends Entity {
     private Field field;
     private String date; // up to 7 days from today
     private String timeslot;
-    private String cost;
     private String status;
 
-    public Reservation(String id, Customer customer, Field field, String date, String timeslot, String cost) {
+    public Reservation(String id, Customer customer, Field field, String date, String timeslot) {
         super(id);
         prefixId("RES");
         this.customer = customer;
         this.field = field;
         this.date = date;
         this.timeslot = timeslot;
-        this.cost = cost;
         this.status = STATUS_LIST.get(0);
     }
+
+    public Reservation(String id, Customer customer, Field field, String date, String timeslot, String status){
+        super(id);
+        prefixId("RES");
+        this.customer = customer;
+        this.field = field;
+        this.date = date;
+        this.timeslot = timeslot;
+        this.status = status;
+    }
+
 
     public Customer getCustomer() {
         return customer;
@@ -63,12 +72,8 @@ public class Reservation extends Entity {
         this.timeslot = timeslot;
     }
 
-    public void setCost(String cost) {
-        this.cost = cost;
-    }
-
-    public String getCost() {
-        return cost;
+    public float getCost() {
+        return field.getPrice();
     }
 
     public String getStatus() {
@@ -77,5 +82,18 @@ public class Reservation extends Entity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id='" + id + '\'' +
+                ", customer=" + customer.getId() +
+                ", field=" + field.getId() +
+                ", date='" + date + '\'' +
+                ", timeslot='" + timeslot + '\'' +
+                ", cost='" + getCost() + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

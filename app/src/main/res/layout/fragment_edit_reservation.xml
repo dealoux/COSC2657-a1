@@ -6,6 +6,18 @@
     android:orientation="vertical"
     tools:context=".activities.reservation.ReservationEditFragment">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/reservationIdLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Reservation ID">
+
+        <EditText
+            android:id="@+id/reservationId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

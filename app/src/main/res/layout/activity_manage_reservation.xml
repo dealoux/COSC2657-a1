@@ -9,7 +9,7 @@
     tools:context=".activities.reservation.ManageReservationActivity">
 
     <FrameLayout
-        android:id="@+id/mangeReservationFragmentFl"
+        android:id="@+id/manageReservationFragmentFl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </FrameLayout>

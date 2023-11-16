@@ -17,7 +17,7 @@ public abstract class Entity implements Comparable<Entity> {
 
     protected void prefixId(String prefix){
         if(!id.startsWith(prefix)){
-            setId(prefix + "_" + id);
+            setId(prefix + "_" + String.format("%04d", id));
         }
     }
 

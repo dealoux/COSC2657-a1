@@ -57,6 +57,10 @@ public class AppRepository {
         return userManager;
     }
 
+    public ReservationManager getReservationManager() {
+        return reservationManager;
+    }
+
     /**
      * This function reads and loads the owner input/database file
      * */
