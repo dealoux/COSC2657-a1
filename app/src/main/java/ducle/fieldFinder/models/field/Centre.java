@@ -136,4 +136,16 @@ public class Centre extends Entity {
     public List<Field> filterFields(String type, String slot, Date date){
         return filterFields(getFieldManager().getMap().values(), type, slot, date);
     }
+
+    @Override
+    public String toString() {
+        return "Centre{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", owner=" + owner +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

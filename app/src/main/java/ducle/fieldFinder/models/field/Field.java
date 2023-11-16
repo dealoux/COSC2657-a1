@@ -117,4 +117,15 @@ public class Field extends Entity {
     public boolean isAvailable(){
         return isAvailable(new Date());
     }
+
+    @Override
+    public String toString() {
+        return "Field{" +
+                "id='" + id + '\'' +
+                ", type='" + type + '\'' +
+                ", price=" + price +
+                ", width=" + width +
+                ", length=" + length +
+                '}';
+    }
 }

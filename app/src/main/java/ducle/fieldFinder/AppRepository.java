@@ -6,7 +6,9 @@ import static ducle.fieldFinder.models.utils.ModelUtils.splitTrimLine;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ListIterator;
+import java.util.Map;
 import java.util.Properties;
 
 import ducle.fieldFinder.models.field.Centre;
@@ -115,6 +117,34 @@ public class AppRepository {
     }
 
     /**
+     * This function returns the map of all centres
+     * */
+    public Map<String, Centre> centresMap(){
+        Map<String, Centre> result = new HashMap<>();
+
+        for(Owner owner: userManager.getOwnerList()){
+            result.putAll(owner.getCentreManager().getMap());
+        }
+
+        return result;
+    }
+
+    /**
+     * This function returns the centre with the given id
+     * @param id
+     * */
+    public Centre findCentre(String id){
+        for(Owner owner: userManager.getOwnerList()){
+            for(Centre centre: owner.getCentreManager().getMap().values()){
+                if(centre.getId().equals(id)){
+                    return centre;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
      * This function returns the list of all fields
      * */
     public ArrayList<Field> fieldsList(){
@@ -129,6 +159,25 @@ public class AppRepository {
         return fields;
     }
 
+    /**
+     * This function returns the map of all fields
+     * */
+    public Map<String, Field> fieldsMap(){
+        Map<String, Field> result = new HashMap<>();
+
+        for(Owner owner: userManager.getOwnerList()){
+            for(Centre centre: owner.getCentreManager().getMap().values()){
+                result.putAll(centre.getFieldManager().getMap());
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * This function returns the field with the given id
+     * @param id
+     * */
     public Field findField(String id){
         for(Owner owner: userManager.getOwnerList()){
             for(Centre centre: owner.getCentreManager().getMap().values()){
