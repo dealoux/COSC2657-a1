@@ -18,6 +18,6 @@ public class Customer extends User {
 
     @Override
     public String print(){
-        return super.print() + "; " + reservationManager.getMap().size() + "\n" + reservationManager.print();
+        return super.print() + "; " + reservationManager.getMap().size() + reservationManager.print();
     }
 }

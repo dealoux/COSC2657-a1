@@ -76,7 +76,7 @@ public class Manager<T extends Entity> {
 
         List<T> entities = getList();
         for(T entity : entities){
-            result +=  entity.toString() + "\n";
+            result +=  "\n" + entity.toString();
         }
 
         return result;
@@ -86,7 +86,7 @@ public class Manager<T extends Entity> {
         String result = "";
 
         for(T entity : getList()){
-            result +=  entity.print() + "\n";
+            result += "\n" + entity.print();
         }
 
         return result;
