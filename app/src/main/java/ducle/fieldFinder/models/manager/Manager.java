@@ -1,5 +1,7 @@
 package ducle.fieldFinder.models.manager;
 
+import static ducle.fieldFinder.models.utils.ModelUtils.toList;
+
 import ducle.fieldFinder.models.Entity;
 
 import java.util.*;
@@ -18,10 +20,8 @@ public class Manager<T extends Entity> {
     /**
      * This function returns a list of all T instances
      * */
-    public List<T> getList(){
-        List<T> result = new ArrayList<>(map.values());
-        Collections.sort(result);
-        return result;
+    public ArrayList<T> getList(){
+        return toList(map);
     }
 
     /**

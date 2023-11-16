@@ -12,3 +12,5 @@ FIE_07, Soccer Field 1, Soccer, 1000000, 90, 120
 FIE_08, Soccer Field 2, Soccer, 1000000, 90, 120
 FIE_09, Basketball Court 1, Basketball, 480000, 15.24, 26
 FIE_10, Basketball Court 2, Basketball, 480000, 15.24, 26
+CUS_01, Ceres, Fauna, 1 Forest St, 402123587, 21/3/1994, faufau213, faunny, 1
+RES_01, CUS_01, FIE_02, Nov 17 2023, 7:00, 180000, Fulfilled

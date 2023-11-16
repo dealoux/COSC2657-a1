@@ -2,6 +2,7 @@ package ducle.fieldFinder;
 
 import static ducle.fieldFinder.models.utils.ModelUtils.readFile;
 import static ducle.fieldFinder.models.utils.ModelUtils.splitTrimLine;
+import static ducle.fieldFinder.models.utils.ModelUtils.toList;
 
 import android.util.Log;
 
@@ -84,7 +85,7 @@ public class AppRepository {
 
                     Log.d("addcentre", owner.getCentreManager().add(centre));
                 }
-                Log.d("addowner", userManager.add(owner));
+                Log.d("addowner", userManager.addOwner(owner));
             }
             else if(id.startsWith("CUS")) {
                 Customer customer = new Customer(id, data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
@@ -97,23 +98,10 @@ public class AppRepository {
                     Log.d("addreservation", customer.getReservationManager().add(reservation));
                 }
 
-                Log.d("addcustomer", userManager.add(customer));
+                Log.d("addcustomer", userManager.addCustomer(customer));
             }
         }
         Log.d("printUser", userManager.toString());
-    }
-
-    /**
-     * This function returns the list of all centres
-     * */
-    public ArrayList<Centre> centresList(){
-        ArrayList<Centre> centres = new ArrayList<>();
-        for(Owner owner: userManager.getOwnerList()){
-            for(Centre centre: owner.getCentreManager().getMap().values()){
-                centres.add(centre);
-            }
-        }
-        return centres;
     }
 
     /**
@@ -122,7 +110,7 @@ public class AppRepository {
     public Map<String, Centre> centresMap(){
         Map<String, Centre> result = new HashMap<>();
 
-        for(Owner owner: userManager.getOwnerList()){
+        for(Owner owner: userManager.getOwnerManager().getMap().values()){
             result.putAll(owner.getCentreManager().getMap());
         }
 
@@ -130,11 +118,18 @@ public class AppRepository {
     }
 
     /**
+     * This function returns the list of all centres
+     * */
+    public ArrayList<Centre> centresList(){
+        return toList(centresMap());
+    }
+
+    /**
      * This function returns the centre with the given id
      * @param id
      * */
     public Centre findCentre(String id){
-        for(Owner owner: userManager.getOwnerList()){
+        for(Owner owner: userManager.getOwnerManager().getMap().values()){
             for(Centre centre: owner.getCentreManager().getMap().values()){
                 if(centre.getId().equals(id)){
                     return centre;
@@ -145,27 +140,12 @@ public class AppRepository {
     }
 
     /**
-     * This function returns the list of all fields
-     * */
-    public ArrayList<Field> fieldsList(){
-        ArrayList<Field> fields = new ArrayList<>();
-        for(Owner owner: userManager.getOwnerList()){
-            for(Centre centre: owner.getCentreManager().getMap().values()){
-                for(Field field: centre.getFieldManager().getMap().values()){
-                    fields.add(field);
-                }
-            }
-        }
-        return fields;
-    }
-
-    /**
      * This function returns the map of all fields
      * */
     public Map<String, Field> fieldsMap(){
         Map<String, Field> result = new HashMap<>();
 
-        for(Owner owner: userManager.getOwnerList()){
+        for(Owner owner: userManager.getOwnerManager().getMap().values()){
             for(Centre centre: owner.getCentreManager().getMap().values()){
                 result.putAll(centre.getFieldManager().getMap());
             }
@@ -175,11 +155,18 @@ public class AppRepository {
     }
 
     /**
+     * This function returns the list of all fields
+     * */
+    public ArrayList<Field> fieldsList(){
+        return toList(fieldsMap());
+    }
+
+    /**
      * This function returns the field with the given id
      * @param id
      * */
     public Field findField(String id){
-        for(Owner owner: userManager.getOwnerList()){
+        for(Owner owner: userManager.getOwnerManager().getMap().values()){
             for(Centre centre: owner.getCentreManager().getMap().values()){
                 for(Field field: centre.getFieldManager().getMap().values()){
                     if(field.getId().equals(id)){
@@ -189,5 +176,25 @@ public class AppRepository {
             }
         }
         return null;
+    }
+
+    /**
+     * This function returns the map of all reservations
+     * */
+    public Map<String, Reservation> reservationsMap(){
+        Map<String, Reservation> result = new HashMap<>();
+
+        for(Customer customer: userManager.getCustomerManager().getMap().values()){
+            result.putAll(customer.getReservationManager().getMap());
+        }
+
+        return result;
+    }
+
+    /**
+     * This function returns the list of all reservations
+     * */
+    public ArrayList<Reservation> reservationsList(){
+        return toList(reservationsMap());
     }
 }

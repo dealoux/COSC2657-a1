@@ -8,7 +8,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Locale;
+import java.util.Collections;
+import java.util.Map;
+
+import ducle.fieldFinder.models.Entity;
 
 public class ModelUtils {
     /**
@@ -43,6 +46,16 @@ public class ModelUtils {
         for(String s : result){
             Log.d("splitTrimLine", s);
         }
+        return result;
+    }
+
+    /**
+     * This function converts a map of T key value pair to a list of T instances and returns it
+     * @param map map of T key value pair
+     * */
+    public static <T extends Entity> ArrayList<T> toList(Map<String, T> map){
+        ArrayList<T> result = new ArrayList<>(map.values());
+        Collections.sort(result);
         return result;
     }
 }

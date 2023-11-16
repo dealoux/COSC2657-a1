@@ -1,39 +1,30 @@
 package ducle.fieldFinder.models.manager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ducle.fieldFinder.models.user.*;
 
-public class UserManager extends Manager<User>{
-    /**
-     * This function returns a list of all Customer instances in the map
-     */
-    public List<Customer> getCustomerList(){
-        List<Customer> result = new ArrayList<>();
+public class UserManager{
+    private Manager<Owner> ownerManager;
+    private Manager<Customer> customerManager;
 
-        for(User user : map.values()){
-            if(user instanceof Customer){
-                result.add((Customer) user);
-            }
-        }
-
-        return result;
+    public UserManager(){
+        ownerManager = new Manager<>();
+        customerManager = new Manager<>();
     }
 
-    /**
-     * This function returns a list of Owner instances in the map
-     */
-    public List<Owner> getOwnerList(){
-        List<Owner> result = new ArrayList<>();
+    public Manager<Owner> getOwnerManager() {
+        return ownerManager;
+    }
 
-        for(User user : map.values()){
-            if(user instanceof Owner){
-                result.add((Owner) user);
-            }
-        }
+    public Manager<Customer> getCustomerManager() {
+        return customerManager;
+    }
 
-        return result;
+    public String addOwner(Owner owner){
+        return ownerManager.add(owner);
+    }
+
+    public String addCustomer(Customer customer){
+        return customerManager.add(customer);
     }
 
     /**
@@ -42,16 +33,19 @@ public class UserManager extends Manager<User>{
      * @param username username for searching
      * */
     public User searchUserByUsername(String username){
-        User result = null;
-
-        for(User user : map.values()){
+        for(Customer user : customerManager.getMap().values()){
             if(user.getUsername().equals(username)){
-                result = user;
-                break;
+                return user;
             }
         }
 
-        return result;
+        for(Owner user : ownerManager.getMap().values()){
+            if(user.getUsername().equals(username)){
+                return user;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -69,12 +63,5 @@ public class UserManager extends Manager<User>{
         }
 
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "UserManager{" +
-                "map=" + map +
-                '}';
     }
 }
