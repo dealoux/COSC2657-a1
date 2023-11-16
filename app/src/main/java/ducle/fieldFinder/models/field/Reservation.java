@@ -99,6 +99,6 @@ public class Reservation extends Entity {
 
     @Override
     public String print() {
-        return super.print() + ", " + customer.getId() + ", " + field.getId() + ", " + date + ", " + timeslot + ", " + status;
+        return super.print() + "; " + customer.getId() + "; " + field.getId() + "; " + date + "; " + timeslot + "; " + status;
     }
 }

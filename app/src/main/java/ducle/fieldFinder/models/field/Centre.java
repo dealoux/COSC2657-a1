@@ -145,6 +145,6 @@ public class Centre extends Entity {
 
     @Override
     public String print(){
-        return super.print() + ", " + name + ", " + address + ", " + phone + ", " + status + ", " + fieldManager.getMap().size() + "\n" + fieldManager.print();
+        return super.print() + "; " + name + "; " + address + "; " + phone + "; " + status + "; " + fieldManager.getMap().size() + "\n" + fieldManager.print();
     }
 }

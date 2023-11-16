@@ -151,6 +151,6 @@ public class Field extends Entity {
 
     @Override
     public String print(){
-        return super.print() + ", " + name + ", " + type + ", " + price + ", " + width + ", " + length;
+        return super.print() + "; " + name + "; " + type + "; " + price + "; " + width + "; " + length;
     }
 }

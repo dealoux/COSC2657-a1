@@ -94,6 +94,6 @@ public class User extends Entity {
 
     @Override
     public String print(){
-        return super.print() + ", " + fName + ", " + lName + ", " + address + ", " + phone + ", " + dob + ", " + username + ", " + password;
+        return super.print() + "; " + fName + "; " + lName + "; " + address + "; " + phone + "; " + dob + "; " + username + "; " + password;
     }
 }

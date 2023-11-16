@@ -18,6 +18,6 @@ public class Owner extends User{
 
     @Override
     public String print(){
-        return super.print() + ", " + centreManager.getMap().size() + "\n" + centreManager.print();
+        return super.print() + "; " + centreManager.getMap().size() + "\n" + centreManager.print();
     }
 }
