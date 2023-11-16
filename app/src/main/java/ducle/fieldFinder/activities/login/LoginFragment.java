@@ -22,6 +22,7 @@ import android.widget.Toast;
 import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.activities.home.HomeActivity;
 import ducle.fieldFinder.R;
+import ducle.fieldFinder.models.user.User;
 
 public class LoginFragment extends Fragment {
     @Override
@@ -55,8 +56,11 @@ public class LoginFragment extends Fragment {
                 intent.putExtra("username", username.getText().toString());
                 intent.putExtra("password", password.getText().toString());
 
-                if((AppRepository.Instance().getUserManager().validateLogin(username.getText().toString(), password.getText().toString()))){
+                User user = AppRepository.Instance().getUserManager().validateLogin(username.getText().toString(), password.getText().toString());
+
+                if(user != null){
                     intent.putExtra("response", "Logged in");
+                    intent.putExtra("userId", user.getId());
                 } else {
                     intent.putExtra("response", "Failed to log in");
                 }

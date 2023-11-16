@@ -1,5 +1,8 @@
 package ducle.fieldFinder.activities.browse;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +11,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.R;
+import ducle.fieldFinder.activities.reservation.MakeReservationActivity;
+import ducle.fieldFinder.models.field.Field;
 
 public class FieldBrowseFragment extends Fragment {
 
@@ -35,10 +42,20 @@ public class FieldBrowseFragment extends Fragment {
         ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, AppRepository.Instance().findCentre(centreId).getFieldManager().getList());
         fieldListView.setAdapter(arrayAdapter);
 
+        ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if(result.getResultCode() == RESULT_OK){
+                        Intent data = result.getData();}
+                });
+
         fieldListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView adapterView, View view, int i, long id) {
-                
+                Intent intent = new Intent(getActivity(), MakeReservationActivity.class);
+                intent.putExtras(getActivity().getIntent());
+                intent.putExtra("fieldId", ((Field) adapterView.getItemAtPosition(i)).getId());
+                launcher.launch(intent);
             }
         });
     }

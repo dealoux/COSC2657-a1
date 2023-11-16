@@ -78,7 +78,7 @@ public class AppRepository {
                     // add fields
                     for(int j=0; j < numFields; j++){
                         data = splitTrimLine(iterator.next());
-                        Field field = new Field(data[0], centre, data[1], Float.parseFloat(data[2]), Float.parseFloat(data[3]), Float.parseFloat(data[4]));
+                        Field field = new Field(data[0], centre, data[1], data[2], Float.parseFloat(data[3]), Float.parseFloat(data[4]), Float.parseFloat(data[5]));
                         Log.d("addfield", centre.getFieldManager().add(field));
                     }
 

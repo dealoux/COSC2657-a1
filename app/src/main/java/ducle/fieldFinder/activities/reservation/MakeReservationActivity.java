@@ -17,18 +17,17 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.R;
 
-public class ReservationActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class MakeReservationActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reservation);
+        setContentView(R.layout.activity_make_reservation);
 
-        Fragment reservationFragment = new ReservationFragment();
+        Fragment reservationFragment = new ReservationEditFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.reservationFragmentFl, reservationFragment);
+        transaction.replace(R.id.makeReservationFragmentFl, reservationFragment);
         transaction.commit();
     }
 

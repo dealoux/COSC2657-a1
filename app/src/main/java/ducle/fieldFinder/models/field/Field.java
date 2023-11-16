@@ -13,25 +13,28 @@ public class Field extends Entity {
     );
 
     private Centre centre; // the centre this field belongs to
+    private String name;
     private String type; // type of field
     private float price;
     private float width;
     private float length;
 
-    public Field(String id, Centre centre, String type) {
+    public Field(String id, Centre centre, String name, String type) {
         super(id);
         prefixId("FIE");
         this.centre = centre;
+        this.name = name;
         this.type = type;
         this.price = 0f;
         this.width = 0f;
         this.length = 0f;
     }
 
-    public Field(String id, Centre centre, String type, float price, float width, float length) {
+    public Field(String id, Centre centre, String name, String type, float price, float width, float length) {
         super(id);
         prefixId("FIE");
         this.centre = centre;
+        this.name = name;
         this.type = type;
         this.price = price;
         this.width = width;
@@ -44,6 +47,14 @@ public class Field extends Entity {
 
     public void setCentre(Centre centre) {
         this.centre = centre;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getType() {
@@ -122,6 +133,7 @@ public class Field extends Entity {
     public String toString() {
         return "Field{" +
                 "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", price=" + price +
                 ", width=" + width +

@@ -1,6 +1,6 @@
 package ducle.fieldFinder.models;
 
-public abstract class Entity implements Comparable<Entity>{
+public abstract class Entity implements Comparable<Entity> {
     protected String id;
 
     public Entity(String id) {

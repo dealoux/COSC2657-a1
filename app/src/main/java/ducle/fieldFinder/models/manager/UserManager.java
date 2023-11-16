@@ -56,16 +56,16 @@ public class UserManager extends Manager<User>{
 
     /**
      * This function validate the given login credentials.
-     * Returns true if found, otherwise returns false
+     * Returns the User instance if found, otherwise returns null
      * @param username
      * @param password
      * */
-    public boolean validateLogin(String username, String password){
-        boolean result = false;
+    public User validateLogin(String username, String password){
+        User result = null;
         User user = searchUserByUsername(username);
 
-        if(user != null){
-            result = user.getPassword().equals(password);
+        if(user != null && user.getPassword().equals(password)){
+            result = user;
         }
 
         return result;

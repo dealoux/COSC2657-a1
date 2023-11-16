@@ -13,7 +13,7 @@ import android.widget.Toast;
 import ducle.fieldFinder.R;
 import ducle.fieldFinder.activities.browse.BrowseActivity;
 import ducle.fieldFinder.activities.login.LoginActivity;
-import ducle.fieldFinder.activities.reservation.ReservationActivity;
+import ducle.fieldFinder.activities.reservation.ManageReservationActivity;
 
 public class HomeActivity extends AppCompatActivity {
     @Override
@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         String username = (String) intent.getExtras().get("username");
         String password = (String) intent.getExtras().get("password");
         String response = (String) intent.getExtras().get("response");
+        String userId = (String) intent.getExtras().get("userId");
 
         String text = response + ": " + username + " (" + password + ")";
         Toast.makeText(HomeActivity.this, text, Toast.LENGTH_LONG).show();
@@ -53,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(HomeActivity.this, BrowseActivity.class);
+                intent1.putExtras(intent);
                 launcher.launch(intent1);
             }
         });
@@ -61,7 +63,8 @@ public class HomeActivity extends AppCompatActivity {
         buttonHomeReservations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(HomeActivity.this, ReservationActivity.class);
+                Intent intent1 = new Intent(HomeActivity.this, ManageReservationActivity.class);
+                intent1.putExtras(intent);
                 launcher.launch(intent1);
             }
         });
