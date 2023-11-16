@@ -22,7 +22,6 @@ public class Centre extends Entity {
     private String phone;
     private String status;
     private Manager<Field> fieldManager;
-    private ReservationManager reservationManager;
 
     public Centre(String id, String name, Owner owner, String address, String phone, String status) {
         super(id);
@@ -33,7 +32,6 @@ public class Centre extends Entity {
         this.phone = phone;
         this.status = status;
         this.fieldManager = new Manager<>();
-        this.reservationManager = new ReservationManager();
     }
 
     public String getName() {
@@ -74,10 +72,6 @@ public class Centre extends Entity {
 
     public Manager<Field> getFieldManager() {
         return fieldManager;
-    }
-
-    public ReservationManager getReservationManager() {
-        return reservationManager;
     }
 
     /**

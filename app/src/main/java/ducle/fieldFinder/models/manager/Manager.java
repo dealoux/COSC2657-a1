@@ -29,7 +29,7 @@ public class Manager<T extends Entity> {
      * Returns the Entity instance if found, otherwise returns null
      * @param id id for searching
      * */
-    public T search(String id){
+    public T get(String id){
         return map.get(id);
     }
 

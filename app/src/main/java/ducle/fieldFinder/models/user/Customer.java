@@ -1,25 +1,18 @@
 package ducle.fieldFinder.models.user;
 
-import java.util.Date;
-
-import ducle.fieldFinder.models.field.Field;
-import ducle.fieldFinder.models.manager.ReservationManager;
+import ducle.fieldFinder.models.field.Reservation;
+import ducle.fieldFinder.models.manager.Manager;
 
 public class Customer extends User {
-    private ReservationManager reservationManager;
+    private Manager<Reservation> reservationManager;
 
     public Customer(String id, String fName, String lName, String address, String phone, String dob, String username, String password) {
         super(id, fName, lName, address, phone, dob, username, password);
         prefixId("CUS");
-        this.reservationManager = new ReservationManager();
+        this.reservationManager = new Manager<>();
     }
 
-    public ReservationManager getReservationManager() {
+    public Manager<Reservation> getReservationManager() {
         return reservationManager;
-    }
-
-    public String makeReservation(Field field, String date, String slot){
-        String result = "Failed to make reservation";
-        return result;
     }
 }

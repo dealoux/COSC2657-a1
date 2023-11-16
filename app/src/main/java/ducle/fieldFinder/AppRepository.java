@@ -15,6 +15,7 @@ import java.util.Properties;
 import ducle.fieldFinder.models.field.Centre;
 import ducle.fieldFinder.models.field.Field;
 import ducle.fieldFinder.models.field.Reservation;
+import ducle.fieldFinder.models.manager.ReservationManager;
 import ducle.fieldFinder.models.manager.UserManager;
 import ducle.fieldFinder.models.user.Customer;
 import ducle.fieldFinder.models.user.Owner;
@@ -22,10 +23,12 @@ import ducle.fieldFinder.models.user.Owner;
 public class AppRepository {
     private static AppRepository instance;
     private UserManager userManager;
+    private ReservationManager reservationManager;
     private Properties configProps;
 
     private AppRepository(){
         userManager = new UserManager();
+        reservationManager = new ReservationManager();
 
         initData();
 //        try {
@@ -94,14 +97,16 @@ public class AppRepository {
                 // add reservations
                 for (int i = 0; i < numReservations; i++) {
                     data = splitTrimLine(iterator.next());
-                    Reservation reservation = new Reservation(data[0], customer, findField(data[1]), data[2], data[3], data[4]);
-                    Log.d("addreservation", customer.getReservationManager().add(reservation));
+
+                    Field field = findField(data[2]);
+                    Reservation reservation = new Reservation(data[0], customer, field, data[3], data[4], data[5]);
+
+                    Log.d("addreservation", reservationManager.addReservation(reservation, customer, field));
                 }
 
                 Log.d("addcustomer", userManager.addCustomer(customer));
             }
         }
-        Log.d("printUser", userManager.toString());
     }
 
     /**
@@ -179,22 +184,32 @@ public class AppRepository {
     }
 
     /**
-     * This function returns the map of all reservations
+     * This function returns the map of all reservations by user id
+     * @param id id of the user
      * */
-    public Map<String, Reservation> reservationsMap(){
-        Map<String, Reservation> result = new HashMap<>();
+    public Map<String, Reservation> reservationsMap(String id){
+        if(id.startsWith("CUS")){
+            return userManager.getCustomerManager().get(id).getReservationManager().getMap();
+        }
+        else if(id.startsWith("OWN")){
+            Map<String, Reservation> result = new HashMap<>();
 
-        for(Customer customer: userManager.getCustomerManager().getMap().values()){
-            result.putAll(customer.getReservationManager().getMap());
+            for(Centre centre: userManager.getOwnerManager().get(id).getCentreManager().getMap().values()){
+                for(Field field: centre.getFieldManager().getMap().values()){
+                    result.putAll(field.getReservationManager().getMap());
+                }
+            }
+            return result;
         }
 
-        return result;
+        return null;
     }
 
     /**
-     * This function returns the list of all reservations
+     * This function returns the list of all reservations by user id
+     * @param id id of the user
      * */
-    public ArrayList<Reservation> reservationsList(){
-        return toList(reservationsMap());
+    public ArrayList<Reservation> reservationsList(String id) {
+        return toList(reservationsMap(id));
     }
 }

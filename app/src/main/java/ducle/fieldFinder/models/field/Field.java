@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import ducle.fieldFinder.models.Entity;
+import ducle.fieldFinder.models.manager.Manager;
 
 public class Field extends Entity {
     public final static List<String> TYPES = new ArrayList<>(
@@ -18,6 +19,7 @@ public class Field extends Entity {
     private float price;
     private float width;
     private float length;
+    private Manager<Reservation> reservationManager;
 
     public Field(String id, Centre centre, String name, String type) {
         super(id);
@@ -28,6 +30,7 @@ public class Field extends Entity {
         this.price = 0f;
         this.width = 0f;
         this.length = 0f;
+        this.reservationManager = new Manager<>();
     }
 
     public Field(String id, Centre centre, String name, String type, float price, float width, float length) {
@@ -39,6 +42,7 @@ public class Field extends Entity {
         this.price = price;
         this.width = width;
         this.length = length;
+        this.reservationManager = new Manager<>();
     }
 
     public Centre getCentre() {
@@ -87,6 +91,10 @@ public class Field extends Entity {
 
     public void setLength(float length) {
         this.length = length;
+    }
+
+    public Manager<Reservation> getReservationManager() {
+        return reservationManager;
     }
 
     /**
