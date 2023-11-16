@@ -19,12 +19,54 @@ public class UserManager{
         return customerManager;
     }
 
+    /**
+     * This function adds a new Owner instance to the map.
+     * Returns a string indicating the result of the operation
+     * @param owner reference to the Owner instance
+     * */
     public String addOwner(Owner owner){
         return ownerManager.add(owner);
     }
 
+    /**
+     * This function adds a new Customer instance to the map.
+     * Returns a string indicating the result of the operation
+     * @param customer reference to the Customer instance
+     * */
     public String addCustomer(Customer customer){
         return customerManager.add(customer);
+    }
+
+    /**
+     * This function adds a new Owner instance to the map.
+     * Returns a string indicating the result of the operation
+     * @param fName first name
+     * @param lName last name
+     * @param address address
+     * @param phone phone number
+     * @param dob date of birth
+     * @param username username
+     * @param password password
+     * */
+    public String addOwner(String fName, String lName, String address, String phone, String dob, String username, String password){
+        Owner owner = new Owner(nextOwnerId(), fName, lName, address, phone, dob, username, password);
+        return addOwner(owner);
+    }
+
+    /**
+     * This function adds a new Customer instance to the map.
+     * Returns a string indicating the result of the operation
+     * @param fName first name
+     * @param lName last name
+     * @param address address
+     * @param phone phone number
+     * @param dob date of birth
+     * @param username username
+     * @param password password
+     * */
+    public String addCustomer(String fName, String lName, String address, String phone, String dob, String username, String password){
+        Customer customer = new Customer(nextCustomerId(), fName, lName, address, phone, dob, username, password);
+        return addCustomer(customer);
     }
 
     public String nextOwnerId(){

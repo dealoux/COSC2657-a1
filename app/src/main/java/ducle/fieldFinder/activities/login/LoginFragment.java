@@ -47,7 +47,6 @@ public class LoginFragment extends Fragment {
                         Intent data = result.getData();
                         Toast.makeText(getActivity(), (String) data.getExtras().get("response"), Toast.LENGTH_SHORT).show();
                     }
-                    AppRepository.Instance().storeData();
                 });
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {

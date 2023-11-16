@@ -85,7 +85,7 @@ public class Manager<T extends Entity> {
     public String print(){
         String result = "";
 
-        for(T entity : getMap().values()){
+        for(T entity : getList()){
             result +=  entity.print() + "\n";
         }
 

@@ -11,19 +11,33 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/fNameRegister"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fnameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="First name" />
+            android:hint="First Name">
 
-        <EditText
-            android:id="@+id/lNameRegister"
+            <EditText
+                android:id="@+id/fNameRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lnameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Last name" />
+            android:hint="Last Name">
+
+            <EditText
+                android:id="@+id/lNameRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -31,23 +45,32 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/dobRegister"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dobLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Date of birth"
-            android:ems="10"
-            android:inputType="date" />
+            android:hint="Date of birth">
 
-        <EditText
-            android:id="@+id/phoneRegister"
+            <EditText
+                android:id="@+id/dobRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Phone"
-            android:ems="10"
-            android:inputType="phone"/>
+            android:hint="Phone">
+
+            <EditText
+                android:id="@+id/phoneRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -55,28 +78,46 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/emailRegister"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addressLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Email address" />
+            android:hint="Address">
 
-        <EditText
-            android:id="@+id/usernameRegister"
+            <EditText
+                android:id="@+id/addressRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usernameRegisterLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Username" />
+            android:hint="Username">
+
+            <EditText
+                android:id="@+id/usernameRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordRegisterLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Password">
 
         <EditText
             android:id="@+id/passwordRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Password"
-            android:ems="10"
             android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <LinearLayout

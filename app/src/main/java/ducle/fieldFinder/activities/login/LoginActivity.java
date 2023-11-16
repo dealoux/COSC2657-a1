@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -54,5 +55,12 @@ public class LoginActivity extends AppCompatActivity implements DatePickerDialog
                 date.setText(dayOfMonth+ "-" + month + "-" +year);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AppRepository.Instance().storeData();
+        Toast.makeText(LoginActivity.this, (String) "Data saved", Toast.LENGTH_SHORT).show();
     }
 }

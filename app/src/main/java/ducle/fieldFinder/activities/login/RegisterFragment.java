@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.R;
 import ducle.fieldFinder.activities.utils.ActivityUtils;
 
@@ -31,7 +32,7 @@ public class RegisterFragment extends Fragment {
         EditText lName = (EditText) view.findViewById(R.id.lNameRegister);
         EditText dob = (EditText) view.findViewById(R.id.dobRegister);
         EditText phone = (EditText) view.findViewById(R.id.phoneRegister);
-        EditText email = (EditText) view.findViewById(R.id.emailRegister);
+        EditText address = (EditText) view.findViewById(R.id.addressRegister);
         EditText username = (EditText) view.findViewById(R.id.usernameRegister);
         EditText password = (EditText) view.findViewById(R.id.passwordRegister);
         Button buttonConfirm = (Button) view.findViewById(R.id.buttonRegisterConfirm);
@@ -47,7 +48,18 @@ public class RegisterFragment extends Fragment {
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Registered User " + username, Toast.LENGTH_SHORT);
+                String text = AppRepository.Instance().getUserManager().addCustomer(
+                        fName.getText().toString(),
+                        lName.getText().toString(),
+                        address.getText().toString(),
+                        phone.getText().toString(),
+                        dob.getText().toString(),
+                        username.getText().toString(),
+                        password.getText().toString()
+                );
+
+                Toast.makeText(getActivity(), "Registered User " + text, Toast.LENGTH_SHORT).show();
+
                 popStack();
             }
         });
