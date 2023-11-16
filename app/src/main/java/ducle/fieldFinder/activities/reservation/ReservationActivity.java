@@ -1,11 +1,6 @@
-package ducle.fieldFinder.activities.login;
+package ducle.fieldFinder.activities.reservation;
 
 import static ducle.fieldFinder.activities.utils.ActivityUtils.setDate;
-
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.app.DatePickerDialog;
 import android.os.Build;
@@ -14,23 +9,26 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.R;
 
-public class LoginActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class ReservationActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_reservation);
 
-        AppRepository.Instance();
-
-        Fragment loginFragment = new LoginFragment();
+        Fragment reservationFragment = new ReservationFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.loginFragmentFl, loginFragment);
+        transaction.replace(R.id.reservationFragmentFl, reservationFragment);
         transaction.commit();
     }
 
@@ -38,7 +36,7 @@ public class LoginActivity extends AppCompatActivity implements DatePickerDialog
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar cal = new GregorianCalendar(year, month, dayOfMonth);
-        setDate((EditText) findViewById(R.id.dobRegister), cal);
+        setDate((EditText) findViewById(R.id.dateReservation), cal);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -48,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements DatePickerDialog
         datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                EditText date = view.findViewById(R.id.dobRegister);
+                EditText date = view.findViewById(R.id.dateReservation);
                 date.setText(dayOfMonth+ "-" + month + "-" +year);
             }
         });

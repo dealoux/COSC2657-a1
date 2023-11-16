@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import ducle.fieldFinder.AppRepository;
-import ducle.fieldFinder.activities.HomeActivity;
+import ducle.fieldFinder.activities.home.HomeActivity;
 import ducle.fieldFinder.R;
 
 public class LoginFragment extends Fragment {

@@ -101,6 +101,34 @@ public class AppRepository {
         Log.d("printUser", userManager.toString());
     }
 
+    /**
+     * This function returns the list of all centres
+     * */
+    public ArrayList<Centre> centresList(){
+        ArrayList<Centre> centres = new ArrayList<>();
+        for(Owner owner: userManager.getOwnerList()){
+            for(Centre centre: owner.getCentreManager().getMap().values()){
+                centres.add(centre);
+            }
+        }
+        return centres;
+    }
+
+    /**
+     * This function returns the list of all fields
+     * */
+    public ArrayList<Field> fieldsList(){
+        ArrayList<Field> fields = new ArrayList<>();
+        for(Owner owner: userManager.getOwnerList()){
+            for(Centre centre: owner.getCentreManager().getMap().values()){
+                for(Field field: centre.getFieldManager().getMap().values()){
+                    fields.add(field);
+                }
+            }
+        }
+        return fields;
+    }
+
     public Field findField(String id){
         for(Owner owner: userManager.getOwnerList()){
             for(Centre centre: owner.getCentreManager().getMap().values()){
@@ -111,7 +139,6 @@ public class AppRepository {
                 }
             }
         }
-
         return null;
     }
 }
