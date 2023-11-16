@@ -18,7 +18,7 @@ public class Customer extends User {
         return reservationManager;
     }
 
-    public String makeReservation(Field field, String slot, Date date){
+    public String makeReservation(Field field, String date, String slot){
         String result = "Failed to make reservation";
         return result;
     }

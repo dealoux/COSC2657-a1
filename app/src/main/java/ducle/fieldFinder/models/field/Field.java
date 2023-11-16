@@ -16,7 +16,7 @@ public class Field extends Entity {
     private String type; // type of field
     private float price;
     private float width;
-    private float height;
+    private float length;
 
     public Field(String id, Centre centre, String type) {
         super(id);
@@ -25,17 +25,17 @@ public class Field extends Entity {
         this.type = type;
         this.price = 0f;
         this.width = 0f;
-        this.height = 0f;
+        this.length = 0f;
     }
 
-    public Field(String id, Centre centre, String type, float price, float width, float height) {
+    public Field(String id, Centre centre, String type, float price, float width, float length) {
         super(id);
         prefixId("FIE");
         this.centre = centre;
         this.type = type;
         this.price = price;
         this.width = width;
-        this.height = height;
+        this.length = length;
     }
 
     public Centre getCentre() {
@@ -70,19 +70,19 @@ public class Field extends Entity {
         this.width = width;
     }
 
-    public float getHeight() {
-        return height;
+    public float getLength() {
+        return length;
     }
 
-    public void setHeight(float height) {
-        this.height = height;
+    public void setLength(float length) {
+        this.length = length;
     }
 
     /**
      *  This method calculates and returns the area of the field
      *  */
     public float area(){
-        return getWidth()*getHeight();
+        return getWidth()* getLength();
     }
 
     /**

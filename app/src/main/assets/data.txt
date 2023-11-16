@@ -1,0 +1,14 @@
+OWN_01, John, Doe, 15 That St, 123456789, 20/4/1980, john204, password, 1
+CEN_01, Phu Tho, 72 This Rd, 452134567, open, 4
+FIE_01, Badminton, 180000, 6.1, 13.41
+FIE_02, Badminton, 180000, 6.1, 13.41
+FIE_03, Basketball, 450000, 15.24, 26
+FIE_04, Soccer, 900000, 90, 120
+OWN_02, Osween, Lady, 42 Our St, 456789123, 17/2/2001, osween01, killerlady, 1
+CEN_02, Thong Nhat, 91 Other Bvld, 204125842, open, 6
+FIE_05, Badminton, 210000, 6.1, 13.41
+FIE_06, Badminton, 210000, 6.1, 13.41
+FIE_07, Soccer, 1000000, 90, 120
+FIE_08, Soccer, 1000000, 90, 120
+FIE_09, Basketball, 480000, 15.24, 26
+FIE_10, Basketball, 480000, 15.24, 26

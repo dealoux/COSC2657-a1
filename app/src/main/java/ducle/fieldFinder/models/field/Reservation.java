@@ -19,12 +19,12 @@ public class Reservation extends Entity {
 
     private Customer customer;
     private Field field;
-    private Date date; // up to 7 days from today
+    private String date; // up to 7 days from today
     private String timeslot;
     private String cost;
     private String status;
 
-    public Reservation(String id, Customer customer, Field field, Date date, String timeslot, String cost) {
+    public Reservation(String id, Customer customer, Field field, String date, String timeslot, String cost) {
         super(id);
         prefixId("RES");
         this.customer = customer;
@@ -47,11 +47,11 @@ public class Reservation extends Entity {
         this.field = field;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
