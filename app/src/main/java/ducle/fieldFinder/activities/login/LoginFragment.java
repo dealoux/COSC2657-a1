@@ -52,20 +52,18 @@ public class LoginFragment extends Fragment {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                intent.putExtra("username", username.getText().toString());
-                intent.putExtra("password", password.getText().toString());
-
                 User user = AppRepository.Instance().getUserManager().validateLogin(username.getText().toString(), password.getText().toString());
 
                 if(user != null){
-                    intent.putExtra("response", "Logged in");
+                    Intent intent = new Intent(getActivity(), HomeActivity.class);
+                    intent.putExtra("username", username.getText().toString());
+                    intent.putExtra("password", password.getText().toString());
                     intent.putExtra("userId", user.getId());
-                } else {
-                    intent.putExtra("response", "Failed to log in");
-                }
 
-                launcher.launch(intent);
+                    launcher.launch(intent);
+                } else {
+                    Toast.makeText(getActivity(), "Incorrect credentials, please try again", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import ducle.fieldFinder.R;
 import ducle.fieldFinder.activities.browse.BrowseActivity;
@@ -24,11 +23,7 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String username = (String) intent.getExtras().get("username");
         String password = (String) intent.getExtras().get("password");
-        String response = (String) intent.getExtras().get("response");
         String userId = (String) intent.getExtras().get("userId");
-
-        String text = response + ": " + username + " (" + password + ")";
-        Toast.makeText(HomeActivity.this, text, Toast.LENGTH_LONG).show();
 
         Button buttonLogout = (Button) findViewById(R.id.buttonLogout);
         buttonLogout.setOnClickListener(new View.OnClickListener() {

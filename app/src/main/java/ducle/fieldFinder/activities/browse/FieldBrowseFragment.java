@@ -36,6 +36,7 @@ public class FieldBrowseFragment extends Fragment {
 
         ListView fieldListView = (ListView) view.findViewById(R.id.browseFieldListView);
 
+        Intent intent = getActivity().getIntent();
         Bundle bundle = this.getArguments();
         String centreId = bundle.getString("centreId");
 
@@ -52,10 +53,12 @@ public class FieldBrowseFragment extends Fragment {
         fieldListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView adapterView, View view, int i, long id) {
-                Intent intent = new Intent(getActivity(), MakeReservationActivity.class);
-                intent.putExtras(getActivity().getIntent());
-                intent.putExtra("fieldId", ((Field) adapterView.getItemAtPosition(i)).getId());
-                launcher.launch(intent);
+                if(intent.getStringExtra("userId").startsWith("CUS")){
+                    Intent intent1 = new Intent(getActivity(), MakeReservationActivity.class);
+                    intent.putExtras(getActivity().getIntent());
+                    intent.putExtra("fieldId", ((Field) adapterView.getItemAtPosition(i)).getId());
+                    launcher.launch(intent1);
+                }
             }
         });
     }
