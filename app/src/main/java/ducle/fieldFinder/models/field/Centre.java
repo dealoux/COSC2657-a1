@@ -142,4 +142,9 @@ public class Centre extends Entity {
                 ", status='" + status + '\'' +
                 '}';
     }
+
+    @Override
+    public String print(){
+        return super.print() + ", " + name + ", " + address + ", " + phone + ", " + status + ", " + fieldManager.getMap().size() + "\n" + fieldManager.print();
+    }
 }

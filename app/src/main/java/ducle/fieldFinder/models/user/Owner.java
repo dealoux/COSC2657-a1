@@ -15,4 +15,9 @@ public class Owner extends User{
     public Manager<Centre> getCentreManager() {
         return centreManager;
     }
+
+    @Override
+    public String print(){
+        return super.print() + ", " + centreManager.getMap().size() + "\n" + centreManager.print();
+    }
 }

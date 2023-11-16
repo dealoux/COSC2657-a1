@@ -22,7 +22,7 @@ public abstract class Entity implements Comparable<Entity> {
     }
 
     public String print(){
-        return "[" + getId() + "]";
+        return getId();
     }
 
     @Override

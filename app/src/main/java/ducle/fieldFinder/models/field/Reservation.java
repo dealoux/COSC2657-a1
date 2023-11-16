@@ -96,4 +96,9 @@ public class Reservation extends Entity {
                 ", status='" + status + '\'' +
                 '}';
     }
+
+    @Override
+    public String print() {
+        return super.print() + ", " + customer.getId() + ", " + field.getId() + ", " + date + ", " + timeslot + ", " + status;
+    }
 }

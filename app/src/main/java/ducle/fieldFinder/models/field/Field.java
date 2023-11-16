@@ -148,4 +148,9 @@ public class Field extends Entity {
                 ", length=" + length +
                 '}';
     }
+
+    @Override
+    public String print(){
+        return super.print() + ", " + name + ", " + type + ", " + price + ", " + width + ", " + length;
+    }
 }

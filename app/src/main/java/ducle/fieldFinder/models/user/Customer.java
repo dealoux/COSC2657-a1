@@ -15,4 +15,9 @@ public class Customer extends User {
     public Manager<Reservation> getReservationManager() {
         return reservationManager;
     }
+
+    @Override
+    public String print(){
+        return super.print() + ", " + reservationManager.getMap().size() + "\n" + reservationManager.print();
+    }
 }

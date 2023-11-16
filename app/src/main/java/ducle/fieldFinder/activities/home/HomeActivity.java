@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(HomeActivity.this, LoginActivity.class);
-                intent1.putExtra("response", "Logged out");
+                intent1.putExtra("response", "Data saved");
                 setResult(RESULT_OK, intent1);
                 finish();
             }

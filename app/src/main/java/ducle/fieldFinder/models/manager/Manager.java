@@ -81,4 +81,14 @@ public class Manager<T extends Entity> {
 
         return result;
     }
+
+    public String print(){
+        String result = "";
+
+        for(T entity : getMap().values()){
+            result +=  entity.print() + "\n";
+        }
+
+        return result;
+    }
 }

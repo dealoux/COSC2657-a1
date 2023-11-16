@@ -3,6 +3,7 @@ package ducle.fieldFinder.models.manager;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.models.field.Field;
 import ducle.fieldFinder.models.field.Reservation;
 import ducle.fieldFinder.models.user.Customer;
@@ -18,10 +19,17 @@ public class ReservationManager {
         return manager;
     }
 
-    public String addReservation(Reservation reservation, Customer customer, Field field){
-        customer.getReservationManager().add(reservation);
-        field.getReservationManager().add(reservation);
+    public String addReservation(Reservation reservation){
+        reservation.getCustomer().getReservationManager().add(reservation);
+        reservation.getField().getReservationManager().add(reservation);
         return manager.add(reservation);
+    }
+
+    public String addReservation(String id, String customerId, String fieldId, String date, String timeslot){
+        Customer customer = AppRepository.Instance().getUserManager().getCustomerManager().get(customerId);
+        Field field = AppRepository.Instance().fieldsMap().get(fieldId);
+        Reservation reservation = new Reservation(id, customer, field, date, timeslot);
+        return addReservation(reservation);
     }
 
     public String cancelReservation(String id){

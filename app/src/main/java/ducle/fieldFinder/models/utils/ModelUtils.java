@@ -1,10 +1,13 @@
 package ducle.fieldFinder.models.utils;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -34,6 +37,21 @@ public class ModelUtils {
 
         }
         catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This function saves the given text to the given file
+     * */
+    public static void saveFile(String text, String path, String fileName){
+        try{
+            File directory = new File(path);
+            File file = new File(directory, fileName);
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            fileOutputStream.write(text.getBytes());
+            fileOutputStream.close();
+        } catch (Exception e){
             e.printStackTrace();
         }
     }

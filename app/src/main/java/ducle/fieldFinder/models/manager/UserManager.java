@@ -27,6 +27,14 @@ public class UserManager{
         return customerManager.add(customer);
     }
 
+    public String nextOwnerId(){
+        return "OWN_" + String.format("%04d", ownerManager.getMap().size() + 1);
+    }
+
+    public String nextCustomerId(){
+        return "CUS_" + String.format("%04d", customerManager.getMap().size() + 1);
+    }
+
     /**
      * This function searches all maps to try and find the user with the given id.
      * Returns the User instance if found, otherwise returns null
@@ -63,5 +71,9 @@ public class UserManager{
         }
 
         return result;
+    }
+
+    public String print(){
+        return ownerManager.print() + customerManager.print();
     }
 }

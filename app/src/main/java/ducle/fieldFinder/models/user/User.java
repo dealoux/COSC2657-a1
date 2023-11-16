@@ -3,13 +3,13 @@ package ducle.fieldFinder.models.user;
 import ducle.fieldFinder.models.Entity;
 
 public class User extends Entity {
-    private String fName;
-    private String lName;
-    private String address;
-    private String phone;
-    private String dob;
-    private String username;
-    private String password;
+    protected String fName;
+    protected String lName;
+    protected String address;
+    protected String phone;
+    protected String dob;
+    protected String username;
+    protected String password;
 
     public User(String id, String fName, String lName, String address, String phone, String dob, String username, String password) {
         super(id);
@@ -90,5 +90,10 @@ public class User extends Entity {
                 ", password='" + password + '\'' +
                 ", id='" + id + '\'' +
                 '}';
+    }
+
+    @Override
+    public String print(){
+        return super.print() + ", " + fName + ", " + lName + ", " + address + ", " + phone + ", " + dob + ", " + username + ", " + password;
     }
 }

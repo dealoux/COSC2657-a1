@@ -1,6 +1,7 @@
 package ducle.fieldFinder;
 
 import static ducle.fieldFinder.models.utils.ModelUtils.readFile;
+import static ducle.fieldFinder.models.utils.ModelUtils.saveFile;
 import static ducle.fieldFinder.models.utils.ModelUtils.splitTrimLine;
 import static ducle.fieldFinder.models.utils.ModelUtils.toList;
 
@@ -71,6 +72,11 @@ public class AppRepository {
 
         while(iterator.hasNext()){
             String[] data = splitTrimLine(iterator.next());
+
+            if(data.length == 0){
+                continue;
+            }
+
             String id = data[0];
 
             if(id.startsWith("OWN")){
@@ -105,12 +111,17 @@ public class AppRepository {
                     Field field = findField(data[2]);
                     Reservation reservation = new Reservation(data[0], customer, field, data[3], data[4], data[5]);
 
-                    Log.d("addreservation", reservationManager.addReservation(reservation, customer, field));
+                    Log.d("addreservation", reservationManager.addReservation(reservation));
                 }
 
                 Log.d("addcustomer", userManager.addCustomer(customer));
             }
         }
+    }
+
+    public void storeData(){
+        String data = userManager.print();
+        saveFile(data,"/data/user/0/ducle.fieldFinder/files", "data.txt");
     }
 
     /**

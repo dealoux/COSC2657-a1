@@ -55,8 +55,8 @@ public class FieldBrowseFragment extends Fragment {
             public void onItemClick(AdapterView adapterView, View view, int i, long id) {
                 if(intent.getStringExtra("userId").startsWith("CUS")){
                     Intent intent1 = new Intent(getActivity(), MakeReservationActivity.class);
-                    intent.putExtras(getActivity().getIntent());
-                    intent.putExtra("fieldId", ((Field) adapterView.getItemAtPosition(i)).getId());
+                    intent1.putExtras(getActivity().getIntent());
+                    intent1.putExtra("fieldId", ((Field) adapterView.getItemAtPosition(i)).getId());
                     launcher.launch(intent1);
                 }
             }

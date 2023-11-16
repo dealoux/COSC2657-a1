@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.R;
+import ducle.fieldFinder.activities.browse.BrowseActivity;
 import ducle.fieldFinder.activities.utils.ActivityUtils;
 import ducle.fieldFinder.models.field.Reservation;
 
@@ -35,8 +37,8 @@ public class ReservationEditFragment extends Fragment {
         Bundle bundle = getArguments();
 
         EditText reservationId = (EditText) view.findViewById(R.id.reservationId);
-        EditText customer = (EditText) view.findViewById(R.id.customerReservation);
-        EditText field = (EditText) view.findViewById(R.id.fieldReservation);
+        EditText customerData = (EditText) view.findViewById(R.id.customerReservation);
+        EditText fieldData = (EditText) view.findViewById(R.id.fieldReservation);
         EditText dateReservation = (EditText) view.findViewById(R.id.dateReservation);
         AutoCompleteTextView timeslot = (AutoCompleteTextView) view.findViewById(R.id.timeReservation);
         Button buttonConfirm = (Button) view.findViewById(R.id.buttonReservationConfirm);
@@ -44,15 +46,15 @@ public class ReservationEditFragment extends Fragment {
 
         if(bundle != null){
             reservationId.setText(bundle.getString("reservationId"));
-            customer.setText(bundle.getString("userId"));
-            field.setText(bundle.getString("fieldId"));
+            customerData.setText(bundle.getString("userId"));
+            fieldData.setText(bundle.getString("fieldId"));
             dateReservation.setText(bundle.getString("date"));
             timeslot.setText(bundle.getString("timeslot"));
         }
         else{
             reservationId.setText(AppRepository.Instance().getReservationManager().nextReservationId());
-            customer.setText(intent.getStringExtra("userId"));
-            field.setText(intent.getStringExtra("fieldId"));
+            customerData.setText(intent.getStringExtra("userId"));
+            fieldData.setText(intent.getStringExtra("fieldId"));
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, Reservation.TIME_SLOTS);
@@ -68,6 +70,14 @@ public class ReservationEditFragment extends Fragment {
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(bundle == null){
+                    String result = AppRepository.Instance().getReservationManager().addReservation(
+                            reservationId.getText().toString(), intent.getStringExtra("userId"), intent.getStringExtra("fieldId"),
+                            dateReservation.getText().toString(), timeslot.getText().toString());
+
+                    Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+                }
+
                 popStack();
             }
         });
@@ -81,6 +91,8 @@ public class ReservationEditFragment extends Fragment {
     }
 
     private void popStack(){
-        getParentFragmentManager().popBackStack();
+//        Intent intent1 = new Intent(getActivity(), BrowseActivity.class);
+//        getActivity().setResult(getActivity().RESULT_OK, intent1);
+        getActivity().finish();
     }
 }
