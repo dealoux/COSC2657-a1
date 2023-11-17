@@ -2,7 +2,6 @@ package ducle.fieldFinder.models.field;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import ducle.fieldFinder.models.Entity;
@@ -86,15 +85,11 @@ public class Reservation extends Entity {
 
     @Override
     public String toString() {
-        return "Reservation{" +
-                "id='" + id + '\'' +
-                ", customer=" + customer.getId() +
-                ", field=" + field.getId() +
-                ", date='" + date + '\'' +
-                ", timeslot='" + timeslot + '\'' +
-                ", cost='" + getCost() + '\'' +
-                ", status='" + status + '\'' +
-                '}';
+        return "Reservation " + id + "\n\n"
+                + customer.toString() + "\n\n"
+                + field.toString() + "\n\n"
+                + "Time: " + timeslot + " " + date + "\n"
+                + "Status: " + status;
     }
 
     @Override

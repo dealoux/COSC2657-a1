@@ -1,8 +1,6 @@
 package ducle.fieldFinder.models.utils;
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;

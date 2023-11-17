@@ -80,16 +80,9 @@ public class User extends Entity {
 
     @Override
     public String toString() {
-        return "User{" +
-                "fName='" + fName + '\'' +
-                ", lName='" + lName + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", dob='" + dob + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", id='" + id + '\'' +
-                '}';
+        return id + " " + fName + " " + lName + "\n"
+                + "Address: " + address + "\n"
+                + "Phone: " + phone;
     }
 
     @Override

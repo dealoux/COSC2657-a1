@@ -20,4 +20,9 @@ public class Owner extends User{
     public String print(){
         return super.print() + "; " + centreManager.getMap().size() + centreManager.print();
     }
+
+    @Override
+    public String toString(){
+        return "Owner " + super.toString();
+    }
 }

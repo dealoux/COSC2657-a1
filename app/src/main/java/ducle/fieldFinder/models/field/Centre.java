@@ -8,7 +8,6 @@ import java.util.List;
 
 import ducle.fieldFinder.models.Entity;
 import ducle.fieldFinder.models.manager.Manager;
-import ducle.fieldFinder.models.manager.ReservationManager;
 import ducle.fieldFinder.models.user.Owner;
 
 public class Centre extends Entity {
@@ -133,14 +132,10 @@ public class Centre extends Entity {
 
     @Override
     public String toString() {
-        return "Centre{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", owner=" + owner +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", status='" + status + '\'' +
-                '}';
+        return "Centre " + id + " - " + name + "\n"
+                + "Address: " + address + "\n"
+                + "Phone: " + phone + "\n"
+                + "Status: " + status;
     }
 
     @Override

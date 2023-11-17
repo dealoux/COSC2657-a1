@@ -139,14 +139,9 @@ public class Field extends Entity {
 
     @Override
     public String toString() {
-        return "Field{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", price=" + price +
-                ", width=" + width +
-                ", length=" + length +
-                '}';
+        return "Field " + id + " - " + name + "\n"
+                + "Size: " + width + "x" + length + "\n"
+                + "Price: " + price;
     }
 
     @Override

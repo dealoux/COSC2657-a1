@@ -20,4 +20,9 @@ public class Customer extends User {
     public String print(){
         return super.print() + "; " + reservationManager.getMap().size() + reservationManager.print();
     }
+
+    @Override
+    public String toString(){
+        return "Customer " + super.toString();
+    }
 }
