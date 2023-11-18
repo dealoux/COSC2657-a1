@@ -14,9 +14,17 @@ public class BrowseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Fragment browseFragment = new CentreBrowseFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.browseFragmentFl, browseFragment);
         transaction.commit();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }

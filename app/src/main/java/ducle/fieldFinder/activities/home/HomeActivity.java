@@ -20,23 +20,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
 
         String userId = (String) intent.getExtras().get("userId");
         String userFname = (String) intent.getExtras().get("userFname");
 
         setTitle("Welcome " + userFname);
-
-        Button buttonLogout = (Button) findViewById(R.id.buttonLogout);
-        buttonLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(HomeActivity.this, LoginActivity.class);
-                intent1.putExtra("response", "Logged out");
-                setResult(RESULT_OK, intent1);
-                finish();
-            }
-        });
 
         ActivityResultLauncher<Intent> launcher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -65,5 +56,11 @@ public class HomeActivity extends AppCompatActivity {
                 launcher.launch(intent1);
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }

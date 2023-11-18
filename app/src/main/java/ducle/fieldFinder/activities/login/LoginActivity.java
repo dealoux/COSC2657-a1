@@ -61,6 +61,6 @@ public class LoginActivity extends AppCompatActivity implements DatePickerDialog
     protected void onResume() {
         super.onResume();
         AppRepository.Instance().storeData();
-        Toast.makeText(LoginActivity.this, (String) "Data saved", Toast.LENGTH_SHORT).show();
+        Toast.makeText(LoginActivity.this, (String) "Logged out \n Data saved", Toast.LENGTH_SHORT).show();
     }
 }

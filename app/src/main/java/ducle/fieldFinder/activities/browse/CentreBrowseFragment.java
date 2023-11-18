@@ -51,8 +51,4 @@ public class CentreBrowseFragment extends Fragment {
             }
         });
     }
-
-    private void popStack(){
-        getParentFragmentManager().popBackStack();
-    }
 }

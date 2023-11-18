@@ -65,8 +65,4 @@ public class FieldBrowseFragment extends Fragment {
             }
         });
     }
-
-    private void popStack(){
-        getParentFragmentManager().popBackStack();
-    }
 }

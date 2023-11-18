@@ -46,8 +46,20 @@ public class ReservationManager {
         return "Reservation " + reservation.getId() + " cancelled";
     }
 
+    /**
+     * This method returns the next reservation id
+     * */
     public String nextReservationId(){
         return "RES_" + String.format("%04d", manager.getMap().size() + 1);
+    }
+
+    /**
+     * This method creates and returns the next reservation based on the given customer and field
+     * @param customer customer who made the reservation
+     * @param field field that is reserved
+     * */
+    public Reservation nextReservation(Customer customer, Field field){
+        return new Reservation(nextReservationId(), customer, field, "", "");
     }
 
     /**

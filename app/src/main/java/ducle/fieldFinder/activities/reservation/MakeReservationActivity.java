@@ -25,6 +25,8 @@ public class MakeReservationActivity extends AppCompatActivity implements DatePi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_reservation);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Fragment reservationFragment = new ReservationEditFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.makeReservationFragmentFl, reservationFragment);
@@ -49,5 +51,11 @@ public class MakeReservationActivity extends AppCompatActivity implements DatePi
                 date.setText(dayOfMonth+ "-" + month + "-" +year);
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }

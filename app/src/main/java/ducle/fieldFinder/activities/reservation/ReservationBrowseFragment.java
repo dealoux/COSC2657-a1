@@ -43,10 +43,6 @@ public class ReservationBrowseFragment extends Fragment {
                 Reservation reservation = (Reservation) adapterView.getItemAtPosition(i);
                 Bundle bundle = new Bundle();
                 bundle.putString("reservationId", reservation.getId());
-                bundle.putString("userId", reservation.getCustomer().getId());
-                bundle.putString("fieldId", reservation.getField().getId());
-                bundle.putString("date", reservation.getDate());
-                bundle.putString("timeslot", reservation.getTimeslot());
 
                 ReservationEditFragment reservationEditFragment = new ReservationEditFragment();
                 reservationEditFragment.setArguments(bundle);

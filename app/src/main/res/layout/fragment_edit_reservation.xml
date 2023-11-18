@@ -79,6 +79,7 @@
                 android:id="@+id/timeReservation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="none"
                 android:layout_weight="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,7 +95,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
                 android:inputType="date" />
         </com.google.android.material.textfield.TextInputLayout>
 

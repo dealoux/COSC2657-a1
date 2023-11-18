@@ -25,6 +25,8 @@ public class ManageReservationActivity extends AppCompatActivity implements Date
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_reservation);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Fragment reservationFragment = new ReservationBrowseFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.manageReservationFragmentFl, reservationFragment);
@@ -49,5 +51,11 @@ public class ManageReservationActivity extends AppCompatActivity implements Date
                 date.setText(dayOfMonth+ "-" + month + "-" +year);
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }
