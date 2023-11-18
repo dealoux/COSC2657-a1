@@ -52,7 +52,6 @@ public class ReservationEditFragment extends Fragment {
             getActivity().setTitle("Edit Reservation");
             reservation = AppRepository.Instance().getReservationManager().getManager().get(bundle.getString("reservationId"));
 
-            reservationId.setText(reservation.getId());
             dateReservation.setText(reservation.getDate());
             timeslot.setText(reservation.getTimeslot());
         }
@@ -63,6 +62,7 @@ public class ReservationEditFragment extends Fragment {
             reservation = AppRepository.Instance().getReservationManager().nextReservation(customer, field);
         }
 
+        reservationId.setText(reservation.getId());
         centreData.setText(reservation.getField().getCentre().toString());
         fieldData.setText(reservation.getField().toString());
         customerData.setText(reservation.getCustomer().toString());
