@@ -97,6 +97,11 @@ public class ReservationEditFragment extends Fragment {
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(bundle != null){
+                    reservation.setStatus("Cancelled");
+                    Toast.makeText(getActivity(), "Cancelled reservation " + reservation.getId() , Toast.LENGTH_SHORT).show();
+                }
+
                 popStack();
             }
         });
