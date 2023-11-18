@@ -35,6 +35,8 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        getActivity().setTitle("Login");
+
         EditText username = (EditText) view.findViewById(R.id.usernameLogin);
         EditText password = (EditText) view.findViewById(R.id.passwordLogin);
         Button buttonLogin = (Button) view.findViewById(R.id.buttonLogin);
@@ -56,9 +58,8 @@ public class LoginFragment extends Fragment {
 
                 if(user != null){
                     Intent intent = new Intent(getActivity(), HomeActivity.class);
-                    intent.putExtra("username", username.getText().toString());
-                    intent.putExtra("password", password.getText().toString());
                     intent.putExtra("userId", user.getId());
+                    intent.putExtra("userFname", user.getfName());
 
                     launcher.launch(intent);
                 } else {

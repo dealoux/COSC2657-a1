@@ -16,7 +16,7 @@ public class Field extends Entity {
     private Centre centre; // the centre this field belongs to
     private String name;
     private String type; // type of field
-    private float price;
+    private int price;
     private float width;
     private float length;
     private Manager<Reservation> reservationManager;
@@ -27,13 +27,13 @@ public class Field extends Entity {
         this.centre = centre;
         this.name = name;
         this.type = type;
-        this.price = 0f;
+        this.price = 0;
         this.width = 0f;
         this.length = 0f;
         this.reservationManager = new Manager<>();
     }
 
-    public Field(String id, Centre centre, String name, String type, float price, float width, float length) {
+    public Field(String id, Centre centre, String name, String type, int price, float width, float length) {
         super(id);
         prefixId("FIE");
         this.centre = centre;
@@ -69,11 +69,11 @@ public class Field extends Entity {
         this.type = type;
     }
 
-    public float getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

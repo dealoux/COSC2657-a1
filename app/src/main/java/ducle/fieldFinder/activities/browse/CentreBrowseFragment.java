@@ -21,14 +21,16 @@ public class CentreBrowseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_centre_browse, container, false);
+        return inflater.inflate(R.layout.fragment_browse, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ListView centreListView = (ListView) view.findViewById(R.id.browseCentreListView);
+        getActivity().setTitle("Browsing centres");
+
+        ListView centreListView = (ListView) view.findViewById(R.id.browseListView);
         ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, AppRepository.Instance().centresList());
         centreListView.setAdapter(arrayAdapter);
 

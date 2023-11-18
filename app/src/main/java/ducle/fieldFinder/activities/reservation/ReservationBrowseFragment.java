@@ -22,16 +22,18 @@ public class ReservationBrowseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reservation_browse, container, false);
+        return inflater.inflate(R.layout.fragment_browse, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        getActivity().setTitle("Browse Reservation");
+
         Intent intent = getActivity().getIntent();
 
-        ListView reservationListView = (ListView) view.findViewById(R.id.browseReservationListView);
+        ListView reservationListView = (ListView) view.findViewById(R.id.browseListView);
         ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, AppRepository.Instance().reservationsList(intent.getStringExtra("userId")));
         reservationListView.setAdapter(arrayAdapter);
 

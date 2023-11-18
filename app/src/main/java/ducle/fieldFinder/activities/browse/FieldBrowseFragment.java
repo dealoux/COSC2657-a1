@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.R;
 import ducle.fieldFinder.activities.reservation.MakeReservationActivity;
+import ducle.fieldFinder.models.field.Centre;
 import ducle.fieldFinder.models.field.Field;
 
 public class FieldBrowseFragment extends Fragment {
@@ -27,20 +28,22 @@ public class FieldBrowseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_field_browse, container, false);
+        return inflater.inflate(R.layout.fragment_browse, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ListView fieldListView = (ListView) view.findViewById(R.id.browseFieldListView);
+        ListView fieldListView = (ListView) view.findViewById(R.id.browseListView);
 
         Intent intent = getActivity().getIntent();
         Bundle bundle = this.getArguments();
-        String centreId = bundle.getString("centreId");
+        Centre centre = AppRepository.Instance().findCentre(bundle.getString("centreId"));
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, AppRepository.Instance().findCentre(centreId).getFieldManager().getList());
+        getActivity().setTitle(centre.getName() + " centre");
+
+        ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, centre.getFieldManager().getList());
         fieldListView.setAdapter(arrayAdapter);
 
         ActivityResultLauncher<Intent> launcher = registerForActivityResult(

@@ -21,9 +21,11 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         Intent intent = getIntent();
-        String username = (String) intent.getExtras().get("username");
-        String password = (String) intent.getExtras().get("password");
+
         String userId = (String) intent.getExtras().get("userId");
+        String userFname = (String) intent.getExtras().get("userFname");
+
+        setTitle("Welcome " + userFname);
 
         Button buttonLogout = (Button) findViewById(R.id.buttonLogout);
         buttonLogout.setOnClickListener(new View.OnClickListener() {

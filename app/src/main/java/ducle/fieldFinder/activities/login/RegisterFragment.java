@@ -28,6 +28,8 @@ public class RegisterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        getActivity().setTitle("Register");
+
         EditText fName = (EditText) view.findViewById(R.id.fNameRegister);
         EditText lName = (EditText) view.findViewById(R.id.lNameRegister);
         EditText dob = (EditText) view.findViewById(R.id.dobRegister);

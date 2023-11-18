@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +20,9 @@ import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.R;
 import ducle.fieldFinder.activities.browse.BrowseActivity;
 import ducle.fieldFinder.activities.utils.ActivityUtils;
+import ducle.fieldFinder.models.field.Field;
 import ducle.fieldFinder.models.field.Reservation;
+import ducle.fieldFinder.models.user.Customer;
 
 public class ReservationEditFragment extends Fragment {
 
@@ -36,29 +39,38 @@ public class ReservationEditFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         Bundle bundle = getArguments();
 
-        EditText reservationId = (EditText) view.findViewById(R.id.reservationId);
-        EditText customerData = (EditText) view.findViewById(R.id.customerReservation);
-        EditText fieldData = (EditText) view.findViewById(R.id.fieldReservation);
+        TextView reservationId = (TextView) view.findViewById(R.id.reservationId);
+        TextView centreData = (TextView) view.findViewById(R.id.centreReservation);
+        TextView fieldData = (TextView) view.findViewById(R.id.fieldReservation);
+        TextView customerData = (TextView) view.findViewById(R.id.customerReservation);
         EditText dateReservation = (EditText) view.findViewById(R.id.dateReservation);
         AutoCompleteTextView timeslot = (AutoCompleteTextView) view.findViewById(R.id.timeReservation);
         Button buttonConfirm = (Button) view.findViewById(R.id.buttonReservationConfirm);
         Button buttonCancel = (Button) view.findViewById(R.id.buttonReservationCancel);
 
+        Field field;
+        Customer customer;
+
         if(bundle != null){
+            getActivity().setTitle("Edit Reservation");
+            field = AppRepository.Instance().findField(bundle.getString("fieldId"));
+            customer = AppRepository.Instance().getUserManager().getCustomerManager().get(bundle.getString("userId"));
             reservationId.setText(bundle.getString("reservationId"));
-            customerData.setText(bundle.getString("userId"));
-            fieldData.setText(bundle.getString("fieldId"));
             dateReservation.setText(bundle.getString("date"));
             timeslot.setText(bundle.getString("timeslot"));
         }
         else{
+            getActivity().setTitle("Make Reservation");
+            field = AppRepository.Instance().findField(intent.getStringExtra("fieldId"));
+            customer = AppRepository.Instance().getUserManager().getCustomerManager().get(intent.getStringExtra("userId"));
             reservationId.setText(AppRepository.Instance().getReservationManager().nextReservationId());
-            customerData.setText(intent.getStringExtra("userId"));
-            fieldData.setText(intent.getStringExtra("fieldId"));
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, Reservation.TIME_SLOTS);
-        timeslot.setAdapter(adapter);
+        centreData.setText(field.getCentre().toString());
+        fieldData.setText(field.toString());
+        customerData.setText(customer.toString());
+
+        timeslot.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, Reservation.TIME_SLOTS));
 
         dateReservation.setOnClickListener(new View.OnClickListener() {
             @Override
