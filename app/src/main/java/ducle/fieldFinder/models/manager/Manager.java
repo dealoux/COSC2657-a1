@@ -40,7 +40,7 @@ public class Manager<T extends Entity> {
      * */
     public String add(T entity){
         map.put(entity.getId(), entity);
-        return "Added " + entity.getClass().toString() + " " + entity.getId();
+        return "Added " + entity.getClass().getSimpleName() + " " + entity.getId();
     }
 
     /**
@@ -53,10 +53,10 @@ public class Manager<T extends Entity> {
         Entity entity = map.remove(id);
 
         if(entity != null){
-            result = "Removed " + entity.getClass().toString() + " " + entity.print();
+            result = "Removed " + entity.getClass().getSimpleName() + " " + entity.print();
         }
         else{
-            result = "Could not find any " + entity.getClass().toString() + " with id " + id;
+            result = "Could not find any " + entity.getClass().getSimpleName() + " with id " + id;
         }
 
         return result;

@@ -9,32 +9,15 @@
     tools:context=".activities.home.HomeActivity">
 
     <Button
-        android:id="@+id/buttonLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout" />
-
-    <LinearLayout
+        android:id="@+id/buttonHomeBrowse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Browse centres and fields" />
 
-        <Button
-            android:id="@+id/buttonHomeBrowse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Browse" />
-    </LinearLayout>
-
-    <LinearLayout
+    <Button
+        android:id="@+id/buttonHomeReservation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Manage reservations" />
 
-        <Button
-            android:id="@+id/buttonHomeReservation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Reservations" />
-    </LinearLayout>
 </LinearLayout>

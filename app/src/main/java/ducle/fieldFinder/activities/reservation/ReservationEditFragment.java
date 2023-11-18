@@ -18,7 +18,6 @@ import androidx.fragment.app.Fragment;
 
 import ducle.fieldFinder.AppRepository;
 import ducle.fieldFinder.R;
-import ducle.fieldFinder.activities.browse.BrowseActivity;
 import ducle.fieldFinder.activities.utils.ActivityUtils;
 import ducle.fieldFinder.models.field.Field;
 import ducle.fieldFinder.models.field.Reservation;
@@ -87,6 +86,9 @@ public class ReservationEditFragment extends Fragment {
                     String result = AppRepository.Instance().getReservationManager().addReservation(reservation);
                     Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
                 }
+                else{
+                    Toast.makeText(getActivity(), "Edited reservation " + reservation.getId() , Toast.LENGTH_SHORT).show();
+                }
 
                 popStack();
             }
@@ -101,8 +103,6 @@ public class ReservationEditFragment extends Fragment {
     }
 
     private void popStack(){
-//        Intent intent1 = new Intent(getActivity(), BrowseActivity.class);
-//        getActivity().setResult(getActivity().RESULT_OK, intent1);
         getActivity().finish();
     }
 }
