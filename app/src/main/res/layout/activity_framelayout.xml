@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".activities.browse.BrowseActivity">
+    android:padding="16dp">
 
     <FrameLayout
-        android:id="@+id/browseFragmentFl"
+        android:id="@+id/fragmentFl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </FrameLayout>

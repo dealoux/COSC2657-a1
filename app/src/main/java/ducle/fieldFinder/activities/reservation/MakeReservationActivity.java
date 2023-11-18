@@ -23,13 +23,13 @@ public class MakeReservationActivity extends AppCompatActivity implements DatePi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_make_reservation);
+        setContentView(R.layout.activity_framelayout);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Fragment reservationFragment = new ReservationEditFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.makeReservationFragmentFl, reservationFragment);
+        transaction.replace(R.id.fragmentFl, reservationFragment);
         transaction.commit();
     }
 

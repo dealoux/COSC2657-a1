@@ -72,7 +72,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.replace(R.id.loginFragmentFl, new RegisterFragment());
+                transaction.replace(R.id.fragmentFl, new RegisterFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
             }

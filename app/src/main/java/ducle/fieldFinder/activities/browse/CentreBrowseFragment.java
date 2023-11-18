@@ -45,7 +45,7 @@ public class CentreBrowseFragment extends Fragment {
                 fieldBrowseFragment.setArguments(bundle);
 
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.browseFragmentFl, fieldBrowseFragment)
+                        .replace(R.id.fragmentFl, fieldBrowseFragment)
                         .addToBackStack(null)
                         .commit();
             }

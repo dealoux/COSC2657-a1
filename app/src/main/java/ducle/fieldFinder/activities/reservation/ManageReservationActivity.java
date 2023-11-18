@@ -23,13 +23,13 @@ public class ManageReservationActivity extends AppCompatActivity implements Date
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manage_reservation);
+        setContentView(R.layout.activity_framelayout);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Fragment reservationFragment = new ReservationBrowseFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.manageReservationFragmentFl, reservationFragment);
+        transaction.replace(R.id.fragmentFl, reservationFragment);
         transaction.commit();
     }
 

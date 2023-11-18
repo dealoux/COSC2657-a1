@@ -12,13 +12,13 @@ public class BrowseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_browse);
+        setContentView(R.layout.activity_framelayout);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Fragment browseFragment = new CentreBrowseFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.browseFragmentFl, browseFragment);
+        transaction.replace(R.id.fragmentFl, browseFragment);
         transaction.commit();
     }
 

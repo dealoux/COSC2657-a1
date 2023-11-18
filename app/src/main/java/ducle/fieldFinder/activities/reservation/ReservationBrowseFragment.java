@@ -48,7 +48,7 @@ public class ReservationBrowseFragment extends Fragment {
                 reservationEditFragment.setArguments(bundle);
 
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.manageReservationFragmentFl, reservationEditFragment)
+                        .replace(R.id.fragmentFl, reservationEditFragment)
                         .addToBackStack(null)
                         .commit();
             }
